@@ -13,7 +13,9 @@ services:
     depends_on:
       - db
     command: ["/bin/sh", "-c", "./wait_for_db.sh && python main.py"]
-
+    volumes:
+        - "/etc/timezone:/etc/timezone:ro"
+        - "/etc/localtime:/etc/localtime:ro"
   db:
     image: postgres:13
     environment:
