@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  app:
+    build: .
+    ports:
+      - "1806:80"
+    env_file:
+      - .env
+    environment:
+      - DB_HOST=db
+      - PGPASSWORD=external2281337
+    depends_on:
+      - db
+    command: ["/bin/sh", "-c", "./wait_for_db.sh && python main.py"]
+
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=car_data
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=changeme
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
