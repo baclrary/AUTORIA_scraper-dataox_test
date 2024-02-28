@@ -1,9 +1,9 @@
 
-# DataOx: Homework
+# DataOx: Homework - AutoRia parser
 
 ## Introduction
 
-This is a test task I had to complete for DataOx. The project was tested and works fine on both macOS and Linux.
+This is a test task I had to complete for DataOx in 24h. The project was tested and works fine on both macOS and Linux.
 
 ## Table of Contents
 
